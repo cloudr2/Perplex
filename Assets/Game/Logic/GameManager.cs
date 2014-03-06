@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour {
 	public int boardSize = 8;
 	public int maxBoardSize = 20;
 
-	//llenar con piezas en donde corresponda
-	public Piece[][] vecBoard;
+	//TODO:llenar con piezas en donde corresponda
+	public Piece[,] vecBoard;
 
 	public Transform tileContainer;
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour {
 
 	void GenerateMap()//TODO:cambiar a matriz o fijarme para que la puedo usar
 	{
-		vecBoard = new Piece[boardSize][boardSize];
+		vecBoard = new Piece[boardSize,boardSize];
 		board = new List<List<Tile>>();
 		for (int i = 0; i < boardSize; i++)
 		{
@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour {
 			for (int j = 0; j < boardSize; j++)
 			{
 				Tile tile = ((GameObject)Instantiate(tilePrefab,new Vector3(i,j,0),Quaternion.Euler(new Vector3()))).GetComponent<Tile>();
-				//Tile tile = (Tile)Instantiate(tilePrefab,new Vector3(i,j,0),Quaternion.Euler(new Vector3()));
 				tile.gridPosition = new Vector2(i,j);
 				tile.transform.parent = tileContainer;
 
